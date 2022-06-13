@@ -8,8 +8,8 @@ class Day(models.Model):
     notes = models.TextField(default='No notes today, happy surfing! :)')
     featured_image = CloudinaryField('image', default='placeholder')
 
-    class Meta:
-        ordering = ['date']
+    # class Meta:
+    #     ordering = ['date']
 
 
 class Beach(models.Model):
@@ -19,5 +19,8 @@ class Beach(models.Model):
     longitude = models.CharField(max_length=50)
     notes = models.TextField()
 
-
+# class Session(models.Model):
+#     # time = choice?
+#     beach = models.ForeignKey(Day)
+    
 
