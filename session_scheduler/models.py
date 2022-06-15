@@ -12,6 +12,9 @@ class Beach(models.Model):
     longitude = models.CharField(max_length=50)
     notes = models.TextField()
 
+    def __str__(self):
+        return self.name
+
 
 class Session(models.Model):
     TIME_CHOICES = [
@@ -38,7 +41,6 @@ class Session(models.Model):
     time = models.CharField(
         max_length=2,
         choices=TIME_CHOICES)
-    date = models.DateField
+    date = models.DateField(auto_now=False)
     surfer = models.ForeignKey(User, on_delete=models.CASCADE)
     
-
