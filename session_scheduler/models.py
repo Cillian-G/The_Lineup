@@ -3,9 +3,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 
-
 class Beach(models.Model):
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=50, unique=True)
     beach_image = CloudinaryField('image', default='placeholder')
     facing = models.CharField(max_length=50)
     latitude = models.CharField(max_length=50)
