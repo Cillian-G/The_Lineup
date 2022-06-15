@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div>
+    <h1>Session test</h1>
+    {% for session in sessions %}
+    <h2>{{ session }}</h2>
+    <!-- <p><strong> Facing:{{ beach.facing}} Longitude:{{ beach.longitude }} Lattitude:{{ beach.latitude }}</strong></p>
+    <p>{{ beach.notes }}</p> -->
+    {% endfor %}
+</div> 
+
+
+{% endblock %}
