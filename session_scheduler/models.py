@@ -5,7 +5,7 @@ from cloudinary.models import CloudinaryField
 
 class Beach(models.Model):
     name = models.CharField(max_length=50, unique=True)
-    slug = f'{name}'
+    slug = models.SlugField(max_length=50, unique=True)
     beach_image = CloudinaryField('image', default='placeholder')
     facing = models.CharField(max_length=50)
     latitude = models.CharField(max_length=50)
@@ -37,7 +37,8 @@ class Session(models.Model):
         ('22', '22.00'),
     ]
     
-    beach = models.ForeignKey(Beach, on_delete=models.CASCADE)
+    beach = models.ForeignKey(Beach, on_delete=models.CASCADE,
+                              related_name="sessions")
     time = models.CharField(
         max_length=2,
         choices=TIME_CHOICES)

@@ -19,6 +19,6 @@ class BeachSessions(View):
             "beach_sessions.html",
             {
                 "beach": beach,
-                "sessions": sessions
-            }
+                "sessions": sessions,
+            },
          )
