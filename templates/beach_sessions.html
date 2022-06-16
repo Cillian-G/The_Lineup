@@ -1,12 +1,23 @@
 {% extends 'base.html' %} {% block content %}
 
 <div>
-    <h1>Session test</h1>
-    {% for session in sessions %} 
-    <h2>{{ session }}</h2>
-     <p><strong> Facing:{{ beach.facing}} Longitude:{{ beach.longitude }} Lattitude:{{ beach.latitude }}</strong></p>
-    <p>{{ beach.notes }}</p> 
-    {% endfor %}
+    <h2>Friendly Sessions on {{ beach.name }} Beach</h2>
+        <p><strong> Facing:{{ beach.facing}} Longitude:{{ beach.longitude }} Lattitude:{{ beach.latitude }}</strong></p>
+        <p>{{ beach.notes }}</p>
+        <h4>Today's sessions</h4>
+        {% for session in sessions %} 
+        {{ todays_full_date }}
+        {% if session.date == todays_full_date %}
+        <p>{{ session.surfer }} {{ session.time }}.00 {{ session.date }} </p>
+        {% endif %}
+        {% endfor %}
+
+        <h4>Tomorrow's sessions</h4>
+
+        <h4>The day after tomorrow's sessions</h4>
+
+        <a href="">+ add a session</a>
+
 </div> 
 
 

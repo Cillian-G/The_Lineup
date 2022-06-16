@@ -45,3 +45,7 @@ class Session(models.Model):
     date = models.DateField(auto_now=False)
     surfer = models.ForeignKey(User, on_delete=models.CASCADE)
     
+    # FIX THIS LATER
+    # def __str__(self):
+    #     return self.User 
+
