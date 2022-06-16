@@ -24,8 +24,6 @@ class BeachSessions(View):
         beach = get_object_or_404(queryset, slug=slug)
         sessions = beach.sessions.order_by("time")
 
-
-
         return render(
             request,
             "beach_sessions.html",
