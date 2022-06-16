@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import generic, View
 from .models import Beach, Session
+from .forms import SessionForm
 import datetime
 
 class BeachList(generic.ListView):
@@ -31,6 +32,7 @@ class BeachSessions(View):
             {
                 "beach": beach,
                 "sessions": sessions,
-                "todays_full_date": todays_full_date 
+                "todays_full_date": todays_full_date,
+                "session_form": SessionForm() 
             },
          )

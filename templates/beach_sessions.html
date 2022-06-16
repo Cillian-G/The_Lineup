@@ -16,7 +16,12 @@
 
         <h4>The day after tomorrow's sessions</h4>
 
-        <a href="">+ add a session</a>
+        <h4">+ add a session</h4>
+        <form method="post">
+            {% csrf_token %}
+            {{ session_form }}
+            <button type="submit">Submit</button>
+        </form>
 
 </div> 
 
