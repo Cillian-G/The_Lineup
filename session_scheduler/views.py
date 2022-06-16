@@ -36,3 +36,30 @@ class BeachSessions(View):
                 "session_form": SessionForm() 
             },
          )
+    
+    def post(self, request, slug, *args, **kwargs):
+        queryset = Beach
+        beach = get_object_or_404(queryset, slug=slug)
+        sessions = beach.sessions.order_by("time")
+
+        session_form = SessionForm(data=request.POST)
+
+        if session_form.is_valid():
+            session_form.instance.surfer = request.user
+            session = session_form.save(commit=False)
+            session.beach = beach
+            session.save()
+        else:
+            session_form = SessionForm()
+
+
+        return render(
+            request,
+            "beach_sessions.html",
+            {
+                "beach": beach,
+                "sessions": sessions,
+                "todays_full_date": todays_full_date,
+                "session_form": SessionForm() 
+            },
+         )

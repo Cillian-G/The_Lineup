@@ -1,12 +1,13 @@
 {% extends 'base.html' %} {% block content %}
 
 <div>
+
     <h2>Friendly Sessions on {{ beach.name }} Beach</h2>
         <p><strong> Facing:{{ beach.facing}} Longitude:{{ beach.longitude }} Lattitude:{{ beach.latitude }}</strong></p>
         <p>{{ beach.notes }}</p>
-        <h4>Today's sessions</h4>
+
+        <h4>Today's sessions</h4> {{ todays_full_date }}
         {% for session in sessions %} 
-        {{ todays_full_date }}
         {% if session.date == todays_full_date %}
         <p>{{ session.surfer }} {{ session.time }}.00 {{ session.date }} </p>
         {% endif %}
