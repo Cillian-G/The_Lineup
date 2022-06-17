@@ -1,16 +1,16 @@
 {% extends 'base.html' %} {% block content %}
 
-<div>
-
-    <h3>{{ beach.name }} Beach</h3>
+<div class="container-fluid">
+    <div>
+        <h3>{{ beach.name }} Beach</h3>
         <div>
             <ul class="list-inline">
-                <li><strong>Facing:</strong>{{ beach.facing }}</li>
-                <li><strong>Coordinates:</strong>{{ beach.longitude }}, {{ beach.latitude }}</li>
+                <li class="list-inline-item"><strong>Facing:</strong>{{ beach.facing }}</li>
+                <li class="list-inline-item"><strong>Coordinates: </strong> {{ beach.latitude }}, {{ beach.longitude }} </li>
                 <li>{{ beach.notes }}</li>
             </ul>
         </div>
-        
+    </div>
         <h3>Upcoming sessions</h3>
         {% regroup sessions by date as session_list %}
         {% for day, session_group in session_list %} 
@@ -23,23 +23,32 @@
                     The day after tomorrow:
                 {% else %}
                 xxxxxx
-                    <!-- {{ today }} / {{ tomorrow }}/{{ day_after_tomorrow}} -->
+                    
                 {% endif %}
                 {{ day }} 
             </strong>
             {% for session in session_group %}
-                <p>
-                    {{ session.time }}.00 {{ session.surfer }} {{ session.date }} 
+                
+                <ul class="list-inline">
+                    <li class="list-inline-item">{{ session.time }}.00</li>
+                    <li class="list-inline-item">{{ session.surfer }}</li>
+                    <li class="list-inline-item">{{ session.date }}</li>   
                     {% if user == session.surfer %}
+                    
+                    <li class="list-inline-item">
                         <a href="/edit/{{ session.id }}">
-                            <b>Edit this session</b>
+                            <button>Edit this session</button>
                         </a>
+                    </li>
+                    <li class="list-inline-item">
                         <a href="/delete/{{ session.id }}">
-                            <b>Delete this session</b>
+                            <button>Delete this session</button>
                         </a>
-                            
+                    </li>
                     {% endif %}
-                </p>
+                </ul>      
+                    
+                
                 
             {% empty %}
                 <p>No sessions found for {{ day }}</p>
