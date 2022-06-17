@@ -6,17 +6,35 @@
         <p><strong> Facing:{{ beach.facing}} Longitude:{{ beach.longitude }} Lattitude:{{ beach.latitude }}</strong></p>
         <p>{{ beach.notes }}</p>
 
-        <h4>Today's sessions</h4> {{ todays_full_date }}
-        {% for session in sessions %} 
-       
-        <p>{{ session.surfer }} {{ session.time }}.00 {{ session.date }} </p>
-        {% if  %}
-        {% endif %}
+        <!-- <h4>Today's sessions</h4> {{ todays_full_date }} -->
+
+        {% regroup sessions by date as session_list %}
+        {% for day, session_group in session_list %} 
+            <strong>
+                {% if day|date:"F d, Y" == today|date:"F d, Y" %}
+                    Today:
+                {% elif day|date:"F d, Y" == tomorrow|date:"F d, Y" %}
+                    Tomorrow:
+                {% elif day|date:"F d, Y" == day_after_tomorrow|date:"F d, Y" %}
+                    The day after tomorrow:
+                {% else %}
+                xxxxxx
+                    <!-- {{ today }} / {{ tomorrow }}/{{ day_after_tomorrow}} -->
+                {% endif %}
+                {{ day }} 
+            </strong>
+            {% for session in session_group %}
+                <p>{{ session.surfer }} {{ session.time }}.00 {{ session.date }} </p>
+            {% empty %}
+                <p>No sessions found for {{ day }}</p>
+            {% endfor %}
+        {% empty %}
+            <p>No sessions found</p>
         {% endfor %}
 
-        <h4>Tomorrow's sessions</h4>
+        <!-- <h4>Tomorrow's sessions</h4>
 
-        <h4>The day after tomorrow's sessions</h4>
+        <h4>The day after tomorrow's sessions</h4> -->
 
         <h4">+ add a session</h4>
         <form method="post">
@@ -28,4 +46,13 @@
 </div> 
 
 
+{% endblock %}
+
+{% block js %}
+<script>
+    today = new Date();
+    let minDate = today.toISOString().substring(0, 10);
+    // event listener on clicking the date picker, setting min attribute to be mindate
+    document.getElementById("id_date").setAttribute("min", minDate); 
+</script>
 {% endblock %}

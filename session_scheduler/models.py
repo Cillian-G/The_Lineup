@@ -3,6 +3,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 
+
 class Beach(models.Model):
     name = models.CharField(max_length=50, unique=True)
     slug = models.SlugField(max_length=50, unique=True)
@@ -36,7 +37,7 @@ class Session(models.Model):
         ('21', '21.00'),
         ('22', '22.00'),
     ]
-    
+
     beach = models.ForeignKey(Beach, on_delete=models.CASCADE,
                               related_name="sessions")
     time = models.CharField(
@@ -47,5 +48,4 @@ class Session(models.Model):
 
     # FIX THIS LATER
     # def __str__(self):
-    #     return self.User 
-
+    #     return self.User
