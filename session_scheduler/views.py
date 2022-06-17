@@ -82,23 +82,27 @@ def edit_session(request, item_id):
             session.save()
             return redirect('beach_sessions', slug=slug)
     context = {
-        'session_form': SessionForm()
+        'session_form': SessionForm(),
+        'beach': beach
     }
     return render(request, "edit_session.html", context)
 
 
 def delete_session(request, item_id):
-
     session = get_object_or_404(Session, id=item_id)
     beach = session.beach
     slug = beach.slug
-
-    if request.method == "POST":
-        session_form = SessionForm(request.POST, instance=session)
-        
-            return redirect('beach_sessions', slug=slug)
+    username = session.surfer
+    time = session.time
+    date = session.date
+    if request.method == 'POST':
+        session.delete()
+        return redirect('beach_sessions', slug=slug)
     context = {
-        'session_form': SessionForm()
+        'session': session,
+        'username': username,
+        'beach': beach,
+        'time': time,
+        'date': date,
     }
-    return render(request, "edit_session.html", context)
-
+    return render(request, 'delete_session.html', context)
