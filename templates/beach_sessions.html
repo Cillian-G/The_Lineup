@@ -2,12 +2,16 @@
 
 <div>
 
-    <h2> {{ beach.name }} Beach</h2>
-        <p><strong> Facing:{{ beach.facing}} Longitude:{{ beach.longitude }} Lattitude:{{ beach.latitude }}</strong></p>
-        <p>{{ beach.notes }}</p>
-
-        <!-- <h4>Today's sessions</h4> {{ todays_full_date }} -->
-
+    <h3>{{ beach.name }} Beach</h3>
+        <div>
+            <ul class="list-inline">
+                <li><strong>Facing:</strong>{{ beach.facing }}</li>
+                <li><strong>Coordinates:</strong>{{ beach.longitude }}, {{ beach.latitude }}</li>
+                <li>{{ beach.notes }}</li>
+            </ul>
+        </div>
+        
+        <h3>Upcoming sessions</h3>
         {% regroup sessions by date as session_list %}
         {% for day, session_group in session_list %} 
             <strong>
@@ -43,10 +47,6 @@
         {% empty %}
             <p>No sessions found</p>
         {% endfor %}
-
-        <!-- <h4>Tomorrow's sessions</h4>
-
-        <h4>The day after tomorrow's sessions</h4> -->
 
         <h4">+ add a session</h4>
         <form method="post">
