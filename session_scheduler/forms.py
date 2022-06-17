@@ -11,4 +11,3 @@ class SessionForm(forms.ModelForm):
         model = Session
         fields = ('date', 'time',)
         widgets = {"date": DateInput()}
-
