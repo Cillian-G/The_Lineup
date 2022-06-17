@@ -1,5 +1,5 @@
 import datetime
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic, View
 from .models import Beach, Session
 from .forms import SessionForm
@@ -69,4 +69,36 @@ class BeachSessions(View):
 
 
 def edit_session(request, item_id):
-    return render(request, "edit_session.html")
+
+    session = get_object_or_404(Session, id=item_id)
+    beach = session.beach
+    slug = beach.slug
+
+    if request.method == "POST":
+        session_form = SessionForm(request.POST, instance=session)
+        if session_form.is_valid():
+            session_form.instance.surfer = request.user
+            session = session_form.save(commit=False)
+            session.save()
+            return redirect('beach_sessions', slug=slug)
+    context = {
+        'session_form': SessionForm()
+    }
+    return render(request, "edit_session.html", context)
+
+
+def delete_session(request, item_id):
+
+    session = get_object_or_404(Session, id=item_id)
+    beach = session.beach
+    slug = beach.slug
+
+    if request.method == "POST":
+        session_form = SessionForm(request.POST, instance=session)
+        
+            return redirect('beach_sessions', slug=slug)
+    context = {
+        'session_form': SessionForm()
+    }
+    return render(request, "edit_session.html", context)
+
