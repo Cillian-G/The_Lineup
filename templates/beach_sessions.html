@@ -24,7 +24,19 @@
                 {{ day }} 
             </strong>
             {% for session in session_group %}
-                <p>{{ session.surfer }} {{ session.time }}.00 {{ session.date }} </p>
+                <p>
+                    {{ session.time }}.00 {{ session.surfer }} {{ session.date }} 
+                    {% if user == session.surfer %}
+                        <a href="/edit/{{ session.id }}">
+                            <b>Edit this session</b>
+                        </a>
+                        <a href="/delete/{{ session.id }}">
+                            <b>Delete this session</b>
+                        </a>
+                            
+                    {% endif %}
+                </p>
+                
             {% empty %}
                 <p>No sessions found for {{ day }}</p>
             {% endfor %}
@@ -52,7 +64,6 @@
 <script>
     today = new Date();
     let minDate = today.toISOString().substring(0, 10);
-    // event listener on clicking the date picker, setting min attribute to be mindate
     document.getElementById("id_date").setAttribute("min", minDate); 
 </script>
 {% endblock %}

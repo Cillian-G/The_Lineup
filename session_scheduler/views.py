@@ -66,3 +66,7 @@ class BeachSessions(View):
                 "day_after_tomorrow": day_after_tomorrow,
             }
          )
+
+
+def edit_session(request, item_id):
+    return render(request, "edit_session.html")
