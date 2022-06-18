@@ -2,13 +2,21 @@
 
 {% block content %}
 
-<div>
-    <h1>THE LINEUP</h1>
+<div class="container-fluid">
     {% for beach in beach_list %}
-    <h2>{{ beach.name }}</h2>
-    <p><strong> Facing:{{ beach.facing}} Longitude:{{ beach.longitude }} Lattitude:{{ beach.latitude }}</strong></p>
+    <h2>{{ beach.name }}</h2> 
+    <img src=" {{ beach.beach_image.url }}" width="100%">
+    <p>
+        <strong>Facing: </strong>{{ beach.facing}} 
+        <strong>Coordinates: </strong>{{ beach.latitude }}, {{ beach.longitude }}
+        <a href="{% url 'beach_sessions' beach.slug %}">
+            <button class="btn btn-outline-primary btn-sm">
+                click here to see sessions
+            </button>
+        </a>
+    </p>
+    
     <p>{{ beach.notes }}</p>
-    <a href="{% url 'beach_sessions' beach.slug %}"><p>click here to see sessions</p></a>
     {% endfor %}
 </div> 
 

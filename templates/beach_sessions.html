@@ -29,24 +29,24 @@
             </strong>
             {% for session in session_group %}
                 
-                <ul class="list-inline">
-                    <li class="list-inline-item">{{ session.time }}.00</li>
-                    <li class="list-inline-item">{{ session.surfer }}</li>
-                    <li class="list-inline-item">{{ session.date }}</li>   
-                    {% if user == session.surfer %}
-                    
-                    <li class="list-inline-item">
-                        <a href="/edit/{{ session.id }}">
-                            <button>Edit this session</button>
-                        </a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="/delete/{{ session.id }}">
-                            <button>Delete this session</button>
-                        </a>
-                    </li>
-                    {% endif %}
-                </ul>      
+            <ul class="list-inline">
+                <li class="list-inline-item">{{ session.time }}.00</li>
+                <li class="list-inline-item">{{ session.surfer }}</li>
+                <li class="list-inline-item">{{ session.date }}</li>   
+                {% if user == session.surfer %}
+                
+                <li class="list-inline-item">
+                    <a href="/edit/{{ session.id }}">
+                        <button class="btn btn-outline-primary btn-sm">Edit this session</button>
+                    </a>
+                </li>
+                <li class="list-inline-item">
+                    <a href="/delete/{{ session.id }}">
+                        <button class="btn btn-outline-secondary btn-sm">Delete this session</button>
+                    </a>
+                </li>
+                {% endif %}
+            </ul>      
                     
                 
                 
@@ -57,11 +57,11 @@
             <p>No sessions found</p>
         {% endfor %}
 
-        <h4">+ add a session</h4>
+        <h4></h4>
         <form method="post">
             {% csrf_token %}
             {{ session_form }}
-            <button type="submit">Submit</button>
+            <button type="submit" class="btn btn-outline-info">+ add a session</button>
         </form>
 
 </div> 
