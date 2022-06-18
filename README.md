@@ -1,4 +1,4 @@
-# Title
+# Surf Social
 Intro paragraph
 amiresponisive image
 ## User Stories
