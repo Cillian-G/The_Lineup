@@ -6,19 +6,22 @@
 {% block head_title %}{% trans "Sign In" %}{% endblock %}
 
 {% block content %}
-
+<div class="container pl-2">
 <h1>{% trans "Sign In" %}</h1>
-
+</div>
+<div class="container pl-2">
 <p> Please sign in with the account provided to you by the surfclub.</p>
-
+</div>
+<div class="container pl-2">
 <form class="login" method="POST" action="{% url 'account_login' %}">
   {% csrf_token %}
   {{ form.as_p }}
   {% if redirect_field_value %}
   <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
   {% endif %}
-  <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
-  <button class="primaryAction" type="submit">{% trans "Sign In" %}</button>
+  <button class="primaryAction btn btn-outline-primary" type="submit">{% trans "Sign In" %}</button>
 </form>
+</div>
+
 
 {% endblock %}
