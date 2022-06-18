@@ -11,61 +11,84 @@
             </div>
         </div>
         <div>
-            <ul class="list-inline">
-                <li class="list-inline-item"><strong>Facing:</strong>{{ beach.facing }}</li>
-                <li class="list-inline-item"><strong>Coordinates: </strong> {{ beach.latitude }}, {{ beach.longitude }} </li>
-                <li>{{ beach.notes }}</li>
-            </ul>
+            <div class="container pl-2">
+                <div class="row">
+                    <div class="col-4">
+                        <strong>Facing: </strong>{{ beach.facing}}
+                    </div>
+                    <div class="col-6">
+                        <strong>Coordinates: </strong>{{ beach.latitude }}, {{ beach.longitude }}
+                    </div>
+                    <div class="col-2">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-9">
+                        <p>{{ beach.notes }}</p>
+                    </div>
+                    <div class="col-3">
+                    </div>
+                </div>
+            </div>
+            {% if user.is_authenticated %}
             <form method="post">
                 {% csrf_token %}
                 {{ session_form }}
                 <button type="submit" class="btn btn-outline-info">+ add a session</button>
             </form>
+            {% endif %}
         </div>
     </div>
         <h3>Upcoming sessions</h3>
-        {% regroup sessions by date as session_list %}
-        {% for day, session_group in session_list %} 
-            <strong>
-                {% if day|date:"F d, Y" == today|date:"F d, Y" %}
-                    Today:
-                {% elif day|date:"F d, Y" == tomorrow|date:"F d, Y" %}
-                    Tomorrow:
-                {% elif day|date:"F d, Y" == day_after_tomorrow|date:"F d, Y" %}
-                    The day after tomorrow:
-                {% else %}
-                xxxxxx
+        {% if user.is_authenticated %}
+            {% regroup sessions by date as session_list %}
+            {% for day, session_group in session_list %} 
+                <strong>
+                    {% if day|date:"F d, Y" == today|date:"F d, Y" %}
+                        Today:
+                    {% elif day|date:"F d, Y" == tomorrow|date:"F d, Y" %}
+                        Tomorrow:
+                    {% elif day|date:"F d, Y" == day_after_tomorrow|date:"F d, Y" %}
+                        The day after tomorrow:
+                    {% else %}
+                    xxxxxx
+                        
+                    {% endif %}
+                    {{ day }} 
+                </strong>
+                {% for session in session_group %}
                     
-                {% endif %}
-                {{ day }} 
-            </strong>
-            {% for session in session_group %}
+                <ul class="list-inline">
+                    <li class="list-inline-item">{{ session.time }}.00</li>
+                    <li class="list-inline-item">{{ session.surfer }}</li>
+                    <li class="list-inline-item">{{ session.date }}</li>   
+                    {% if user == session.surfer %}
+                    
+                    <li class="list-inline-item">
+                        <a href="/edit/{{ session.id }}">
+                            <button class="btn btn-outline-primary btn-sm">Edit this session</button>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="/delete/{{ session.id }}">
+                            <button class="btn btn-outline-secondary btn-sm">Delete this session</button>
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>      
                 
-            <ul class="list-inline">
-                <li class="list-inline-item">{{ session.time }}.00</li>
-                <li class="list-inline-item">{{ session.surfer }}</li>
-                <li class="list-inline-item">{{ session.date }}</li>   
-                {% if user == session.surfer %}
-                
-                <li class="list-inline-item">
-                    <a href="/edit/{{ session.id }}">
-                        <button class="btn btn-outline-primary btn-sm">Edit this session</button>
-                    </a>
-                </li>
-                <li class="list-inline-item">
-                    <a href="/delete/{{ session.id }}">
-                        <button class="btn btn-outline-secondary btn-sm">Delete this session</button>
-                    </a>
-                </li>
-                {% endif %}
-            </ul>      
-              
+                {% empty %}
+                    <p>No sessions found for {{ day }}</p>
+                {% endfor %}
             {% empty %}
-                <p>No sessions found for {{ day }}</p>
+                <p>No sessions found</p>
             {% endfor %}
-        {% empty %}
-            <p>No sessions found</p>
-        {% endfor %}
+        {% else %}
+            <p>
+                Sessions are only viewable to members of Belmullet Surfclub. If you are a member, 
+                who does not yet have an account, you can contact Cillian to have one made for you.
+            </p>
+        {% endif %}
         
 </div> 
 
