@@ -65,14 +65,10 @@
                     {% if user == session.surfer %}
                     
                     <li class="list-inline-item">
-                        <a href="/edit/{{ session.id }}">
-                            <button class="btn btn-outline-primary btn-sm">Edit this session</button>
-                        </a>
+                        <button onClick="location.href='/edit/{{ session.id }}'" class="btn btn-outline-primary btn-sm">Edit this session</button>
                     </li>
                     <li class="list-inline-item">
-                        <a href="/delete/{{ session.id }}">
-                            <button class="btn btn-outline-secondary btn-sm">Delete this session</button>
-                        </a>
+                        <button onClick="location.href='/delete/{{ session.id }}'" class="btn btn-outline-secondary btn-sm">Delete this session</button>
                     </li>
                     {% endif %}
                 </ul>      

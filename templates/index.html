@@ -20,11 +20,9 @@
     {% for beach in beach_list %}
     <div class="container pl-2">
         <p class="h2">{{ beach.name }} 
-            <a href="{% url 'beach_sessions' beach.slug %}">
-                <button class="btn btn-outline-primary btn-sm">
-                    View sessions
-                </button>
-            </a>
+            <button onClick="location.href='{% url 'beach_sessions' beach.slug %}'"class="btn btn-outline-primary btn-sm">
+                View sessions
+            </button>
         </p> 
     </div>
     <div class="container">
