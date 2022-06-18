@@ -1,9 +1,10 @@
 {% extends 'base.html' %} {% block content %}
-<h2>Edit Sessions for {{ beach.name }} Beach</h2>
-<p>{{ beach.name }}</p>
-<form method="post">
-    {% csrf_token %}
-    {{ session_form }}
-    <button>Confirm edit</button>
-</form>
+<div class="container pl-2">
+    <h2>Edit Sessions for {{ beach.name }} Beach</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ session_form }}
+        <button class="btn btn-outline-primary">Confirm edit</button>
+    </form>
+</div>
 {% endblock %}

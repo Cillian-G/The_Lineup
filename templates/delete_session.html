@@ -1,10 +1,11 @@
 {% extends 'base.html' %} {% block content %}
-<h2>Delete sessions for {{ beach.name }} Beach</h2>
-<form method="post">
-{% csrf_token %}
-<p>{{ session.surfer }}, Are you sure you wish to delete your session on
-{{ beach.name }} Beach, at {{ time }}.00 on {{ date }}?</p>
-<button>I am sure</button>
-</form>
-
+<div class="container pl-2">
+    <h2>Are you sure?</h2>
+        <form method="post">
+        {% csrf_token %}
+            <p>{{ session.surfer }}, Are you sure you wish to delete your session on
+            {{ beach.name }} Beach, at {{ time }}.00 on {{ date }}?</p>
+            <button class="btn btn-outline-danger">I am sure</button>
+        </form>
+</div>
 {% endblock %}
