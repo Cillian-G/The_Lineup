@@ -1,7 +1,21 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+<div class="container pl-2">
+    <div class="row">
+        <div class="col-9">
+            <p>
+                Welcome to Belmullet Surf Clubs session tracker site! Below you'll find listings with basic info 
+                on all of our "club-approved" beaches. Once you sign in with the account made for you by the club, 
+                you'll be able to view times when other surfers are heading out, as well as post sessions to let others 
+                know when you'll be paddling out! Make sure to check the notes on each beach, we'll be keeping them 
+                updated with changes to beaches, and reminders for club events!  
+            </p>
+        </div>
+        <div class="col-3">
+        </div>
+    </div>
+</div>    
 <div class="container-fluid">
     {% for beach in beach_list %}
     <div class="container pl-2">
@@ -21,17 +35,6 @@
             <div class="col-2">
             </div>
         </div>
-        <!-- <div class="row justify-content-md">
-            <div class="col col-lg-2">
-
-            </div>
-            <div class="col col-md">
-                <img src=" {{ beach.beach_image.url }}" width="100%" class="image-fluid">
-            </div>
-            <div class="col col-lg-2">
-
-            </div>
-        </div> -->
     </div>
     <div class="container pl-2">
         <div class="row">
