@@ -4,16 +4,46 @@
 
 <div class="container-fluid">
     {% for beach in beach_list %}
-    <h2>{{ beach.name }}</h2> 
-    <img src=" {{ beach.beach_image.url }}" width="100%">
+    <h2> {{ beach.name }} </h2> 
+    <div class="container">
+        <div class="row">
+            <div class="col-8">
+                <img src=" {{ beach.beach_image.url }}" width="100%" class="image-fluid">
+            </div>
+            <div class="col-4">
+            </div>
+        </div>
+        <!-- <div class="row justify-content-md">
+            <div class="col col-lg-2">
+
+            </div>
+            <div class="col col-md">
+                <img src=" {{ beach.beach_image.url }}" width="100%" class="image-fluid">
+            </div>
+            <div class="col col-lg-2">
+
+            </div>
+        </div> -->
+    </div>
     <p>
-        <strong>Facing: </strong>{{ beach.facing}} 
-        <strong>Coordinates: </strong>{{ beach.latitude }}, {{ beach.longitude }}
-        <a href="{% url 'beach_sessions' beach.slug %}">
-            <button class="btn btn-outline-primary btn-sm">
-                click here to see sessions
-            </button>
-        </a>
+        <div class="row">
+            <div class="col">
+                <strong>Facing: </strong>{{ beach.facing}}
+            </div>
+            <div class="col">
+                <strong>Coordinates: </strong>{{ beach.latitude }}, {{ beach.longitude }}
+            </div>
+            <div class="col">
+                <a href="{% url 'beach_sessions' beach.slug %}">
+                    <button class="btn btn-outline-primary btn-sm">
+                        View sessions
+                    </button>
+                </a>
+            </div>
+        </div>
+         
+        
+        
     </p>
     
     <p>{{ beach.notes }}</p>
