@@ -4,13 +4,21 @@
 
 <div class="container-fluid">
     {% for beach in beach_list %}
-    <h2> {{ beach.name }} </h2> 
+    <div class="container pl-2">
+        <p class="h2">{{ beach.name }} 
+            <a href="{% url 'beach_sessions' beach.slug %}">
+                <button class="btn btn-outline-primary btn-sm">
+                    View sessions
+                </button>
+            </a>
+        </p> 
+    </div>
     <div class="container">
         <div class="row">
-            <div class="col-8">
+            <div class="col-10">
                 <img src=" {{ beach.beach_image.url }}" width="100%" class="image-fluid">
             </div>
-            <div class="col-4">
+            <div class="col-2">
             </div>
         </div>
         <!-- <div class="row justify-content-md">
@@ -25,28 +33,27 @@
             </div>
         </div> -->
     </div>
-    <p>
+    <div class="container pl-2">
         <div class="row">
-            <div class="col">
+            <div class="col-4">
                 <strong>Facing: </strong>{{ beach.facing}}
             </div>
-            <div class="col">
+            <div class="col-6">
                 <strong>Coordinates: </strong>{{ beach.latitude }}, {{ beach.longitude }}
             </div>
-            <div class="col">
-                <a href="{% url 'beach_sessions' beach.slug %}">
-                    <button class="btn btn-outline-primary btn-sm">
-                        View sessions
-                    </button>
-                </a>
+            <div class="col-2">
             </div>
         </div>
-         
+        <div class="row">
+            <div class="col-9">
+                <p>{{ beach.notes }}</p>
+            </div>
+            <div class="col-3">
+            </div>
+        </div>
         
-        
-    </p>
+    </div>
     
-    <p>{{ beach.notes }}</p>
     {% endfor %}
 </div> 
 

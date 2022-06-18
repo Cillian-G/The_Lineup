@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% block content %}
 
-<div class="container-fluid">
+<div class="container pl-2">
     <div>
         <h3>{{ beach.name }} Beach</h3>
         <div>
@@ -9,6 +9,11 @@
                 <li class="list-inline-item"><strong>Coordinates: </strong> {{ beach.latitude }}, {{ beach.longitude }} </li>
                 <li>{{ beach.notes }}</li>
             </ul>
+            <form method="post">
+                {% csrf_token %}
+                {{ session_form }}
+                <button type="submit" class="btn btn-outline-info">+ add a session</button>
+            </form>
         </div>
     </div>
         <h3>Upcoming sessions</h3>
@@ -54,14 +59,7 @@
         {% empty %}
             <p>No sessions found</p>
         {% endfor %}
-
-        <h4></h4>
-        <form method="post">
-            {% csrf_token %}
-            {{ session_form }}
-            <button type="submit" class="btn btn-outline-info">+ add a session</button>
-        </form>
-
+        
 </div> 
 
 
