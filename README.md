@@ -1,21 +1,21 @@
 # Surf Social
 
-![project screenshot](/documentation/testing/chrome_laptop_test.png)
+![project screenshot](/documenttion/testing/chrome_laptop_test.png)
 
-Surf Social is a website built to allow members of a fictional “Belmullet Surf Club” to coordinate their surfing sessions without cluttering up social media feeds.
+Surf Social is a website built to allow members of a fictional “Belmullet Surf Club” to coordinate their surfing sessions without cluttering up social media feeds. Users are given a 
 
 ## User Stories
 
-As an admin I can edit the "notes" section on the local beaches listing so that surf club users can be made aware of relevant information when they are organizing their sessions.
-As an admin I can create accounts for users so that access can be limited to club users.
-As an admin I can add notes to meet-up posts so that I can add further relevant 
-As a user I can view information about local beaches so that I can stay aware of hazards and other changes as they arise.
-As a user I can login with account details provided by the surf club so that I can view and interact with meetup posts.
-As a user I can add/remove my sessions from meetup posts so that meetup posts can list accurate information about who else will be surfing on a given beach at a given time.
+ - As an admin I can edit the "notes" section on the local beaches listing so that surf club users can be made aware of relevant information when they are organizing their sessions.
+ - As an admin I can create accounts for users so that access can be limited to club users.
+ - As an admin I can add notes to meet-up posts so that I can add further relevant 
+ - As a user I can view information about local beaches so that I can stay aware of hazards and other changes as they arise.
+ - As a user I can login with account details provided by the surf club so that I can view and interact with meetup posts.
+ - As a user I can add/remove my sessions from meetup posts so that meetup posts can list accurate information about who else will be surfing on a given beach at a given time.
 information regarding things like club events, beach hazards or weather warnings.
-As a user I can view meet-up posts so that I can organise to surf at the same time as others.
+ - As a user I can view meet-up posts so that I can organise to surf at the same time as others.
 
-## UX (briefly explain your design)
+## UX 
 
 This design was intended to be minimalist, in part to make future additions easy to implement for the surf clubs webmaster, but also because the purpose of the site itself is very simple. 
 
@@ -29,7 +29,13 @@ Google Font ‘Fresca was chosen for its “laid-back”, and friendly look, whi
 
 ### Wireframes 
 
-WIREFRAMES
+![deployment instructional screenshot](/documenttion/wireframes/wireframe_1.png)
+![deployment instructional screenshot](/documenttion/wireframes/wireframe_2.png)
+![deployment instructional screenshot](/documenttion/wireframes/wireframe_3.png)
+![deployment instructional screenshot](/documenttion/wireframes/wireframe_4.png)
+![deployment instructional screenshot](/documenttion/wireframes/database_diagram.png)
+
+Pictured above is a screenshot "database" diagram that was put together to help conceptualize the models required by the project. 
 
 ## Features
 
@@ -58,9 +64,9 @@ Marvel for building wireframes, google sheets for making database diagrams
 
 ### Browser Compatibility
 
-![chrome / laptop screenshot](/documentation/testing/chrome_laptop_test.png)
-![edge / tablet screenshot](/documentation/testing/edge_tablet_test.png)
-![firefox / mobile screenshot](/documentation/testing/firefox_mobile_test.png)
+![chrome / laptop screenshot](/documenttion/testing/chrome_laptop_test.png)
+![edge / tablet screenshot](/documenttion/testing/edge_tablet_test.png)
+![firefox / mobile screenshot](/documenttion/testing/firefox_mobile_test.png)
 
 ### Responsiveness
 
@@ -70,7 +76,7 @@ See images in browser compatibility section above.
 
 Deployment was on heroku, via github. To copy this deployment, one would need to set up accounts on cloudinary, heroku. Once they had made an app for this project on their heroku account, and after installing heroku postgres for the database, they would need to set up their heroku app config vars wth the headings ilustrated in the image below. The Cloudinary url will be provided by their cloudinary account, and set their own secret key.
 
-![deployment instructional screenshot](/documentation/heroku_deployment.png)
+![deployment instructional screenshot](/documenttion/heroku_deployment.png)
 
 ## Credits
 
