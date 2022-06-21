@@ -2,7 +2,7 @@
 
 ![project screenshot](/documenttion/testing/chrome_laptop_test.png)
 
-Surf Social is a website built to allow members of a fictional “Belmullet Surf Club” to coordinate their surfing sessions without cluttering up social media feeds. Users are given a 
+Surf Social is a website built to allow members of a fictional “Belmullet Surf Club” to coordinate their surfing sessions without cluttering up social media feeds. Users are given login details by the club administrators, which allows them to view when other club surfers will be at a given beach, as well as allowing them to post their own "sessions". If you'd like to give it a try, sign in with the following credentials. Username:Joe_Bloggs Password:belmulletsurfclub
 
 ## User Stories
 
