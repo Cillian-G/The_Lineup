@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['surf-social.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['belmullet-lineup.herokuapp.com', 'localhost']
 
 
 # Application definition
